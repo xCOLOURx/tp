@@ -1,0 +1,40 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
+participant "emd:EditModuleDescriptor" as EditModuleDescriptor LOGIC_COLOR
+participant "e:EditCommand" as EditCommand LOGIC_COLOR
+end box
+
+[-> EditCommandParser : parse("edit CS2040S y/1 s/1 g/A")
+activate EditCommandParser
+
+create EditModuleDescriptor
+EditCommandParser -> EditModuleDescriptor
+activate EditModuleDescriptor
+
+EditModuleDescriptor --> EditCommandParser : emd
+deactivate EditModuleDescriptor
+
+EditCommandParser -> EditModuleDescriptor : set edited fields
+activate EditModuleDescriptor
+
+EditModuleDescriptor --> EditCommandParser
+deactivate EditModuleDescriptor
+
+create EditCommand
+EditCommandParser -> EditCommand : new EditCommand("CS2040S", emd)
+activate EditCommand
+
+EditCommand --> EditCommandParser : e
+deactivate EditCommand
+
+[<-- EditCommandParser : e
+deactivate EditCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+[<-[hidden]- EditCommandParser
+destroy EditCommandParser
+
+@enduml

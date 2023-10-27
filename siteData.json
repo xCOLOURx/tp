@@ -7,11 +7,11 @@
       "headings": {
         "about-us": "About Us",
         "project-team": "Project team",
-        "john-doe": "John Doe",
-        "jane-doe": "Jane Doe",
-        "johnny-doe": "Johnny Doe",
-        "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "andrew-yapp": "Andrew Yapp",
+        "marques-tye": "Marques Tye",
+        "wong-ji-kean": "Wong Ji Kean",
+        "kyle-zheng-ching-chan": "Kyle Zheng Ching Chan",
+        "huan-yaohong": "Huan Yaohong"
       },
       "headingKeywords": {}
     },
@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "ab-3-developer-guide": "AB-3 Developer Guide",
+        "modcraft-developer-guide": "MODCRAFT Developer Guide",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -51,6 +51,7 @@
         "storage-component": "Storage component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
+        "edit-module-feature": "Edit module feature",
         "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
         "proposed-data-archiving": "[Proposed] Data archiving",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
@@ -62,7 +63,9 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
+        "deleting-a-module": "Deleting a module",
+        "calculating-total-cap": "Calculating total CAP",
+        "calculating-total-modular-credits-mcs": "Calculating total Modular Credits (MCs)",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
@@ -107,23 +110,25 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "ab-3-user-guide": "AB-3 User Guide",
+        "modcraft-user-guide": "ModCraft User Guide",
+        "table-of-contents": "Table of Contents",
         "quick-start": "Quick start",
         "features": "Features",
         "viewing-help-help": "Viewing help : help",
-        "adding-a-person-add": "Adding a person: add",
-        "listing-all-persons-list": "Listing all persons : list",
-        "editing-a-person-edit": "Editing a person : edit",
-        "locating-persons-by-name-find": "Locating persons by name: find",
-        "deleting-a-person-delete": "Deleting a person : delete",
-        "clearing-all-entries-clear": "Clearing all entries : clear",
+        "adding-a-module-add": "Adding a module: add",
+        "editing-a-module-edit": "Editing a module: edit",
+        "deleting-a-module-delete": "Deleting a module : delete",
+        "finding-information-about-a-module-info": "Finding Information about a module: info",
+        "calculating-the-total-current-cap": "Calculating the total current CAP:",
+        "calculating-the-total-current-modular-credits-mcs": "Calculating the total current Modular Credits (MCs)",
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
-        "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
+        "archiving-data-files-coming-in-v1-3": "Archiving data files [coming in v1.3]",
         "faq": "FAQ",
         "known-issues": "Known issues",
-        "command-summary": "Command summary"
+        "command-summary": "Command summary",
+        "glossary": "Glossary"
       },
       "headingKeywords": {}
     },
@@ -131,7 +136,15 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "addressbook-level-3": "AddressBook Level-3"
+        "modcraft": "ModCraft"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/ji-just-ji.md",
+      "headings": {
+        "ji-kean-s-project-portfolio-page": "Ji Kean's Project Portfolio Page",
+        "project-modcraft": "Project ModCraft"
       },
       "headingKeywords": {}
     },
@@ -140,6 +153,38 @@
       "title": "John Doe's Project Portfolio Page",
       "headings": {
         "project-addressbook-level-3": "Project: AddressBook Level 3"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/marquestye.md",
+      "headings": {
+        "marques-s-project-portfolio-page": "Marques's Project Portfolio Page",
+        "project-modcraft": "Project ModCraft"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/rocketninja7.md",
+      "title": "Andrew Yapp's Project Portfolio Page",
+      "headings": {
+        "project-modcraft": "Project: ModCraft"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/xcolourx.md",
+      "title": "Kyle Zheng Ching Chan's Project Portfolio Page",
+      "headings": {
+        "project-modcraft": "Project: ModCraft"
+      },
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/yyyaohhh.md",
+      "headings": {
+        "yaohong-s-project-portfolio-page": "Yaohong's Project Portfolio Page",
+        "project-modcraft": "Project ModCraft"
       },
       "headingKeywords": {}
     },
