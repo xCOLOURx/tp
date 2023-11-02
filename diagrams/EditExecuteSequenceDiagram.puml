@@ -15,7 +15,7 @@ end box
 [-> EditCommand : execute()
 activate EditCommand
 
-EditCommand -> Model : findModuleUsingCode("CS2040S")
+EditCommand -> Model : getModule("CS2040S")
 activate Model
 
 Model --> EditCommand : moduleToEdit

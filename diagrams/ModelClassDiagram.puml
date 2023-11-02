@@ -4,24 +4,32 @@ skinparam arrowThickness 1.1
 skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
-Package Model as ModelPackage <<Rectangle>>{
-Class "<<interface>>\nReadOnlyModulePan" as ReadOnlyModulePlan
-Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
+Package "Model                 " as ModelPackage <<Rectangle>>{
 Class "<<interface>>\nModel" as Model
-Class ModulePlan
 Class ModelManager
+
+Class "<<interface>>\nReadOnlyUserPrefs" as ReadOnlyUserPrefs
+Class ReadOnlyUserPrefs
 Class UserPrefs
 
+Class "<<interface>>\nReadOnlyModulePan" as ReadOnlyModulePlan
+Class ReadOnlyModulePlan
+Class ModulePlan
+Class ModulePlanSemesterList
+Class ModulePlanSemester
 Class UniqueModuleList
 Class Module
-Class ModuleDescription
+
+Class Description
+Class ModularCredit
 Class Grade
 Class ModuleCode
 Class ModuleName
 Class Year
 Class Semester
 
-Class I #FFFFFF
+Class "<<interface>>\nReadOnlyModuleData" as ReadOnlyModuleData
+Class ModuleData
 }
 
 Class HiddenOutside #FFFFFF
@@ -30,27 +38,40 @@ HiddenOutside ..> Model
 ModulePlan .up.|> ReadOnlyModulePlan
 
 ModelManager .up.|> Model
-Model .right.> ReadOnlyUserPrefs
-Model .left.> ReadOnlyModulePlan
-ModelManager -left-> "1" ModulePlan
-ModelManager -right-> "1" UserPrefs
+Model ..> ReadOnlyUserPrefs
+Model ..> ReadOnlyModulePlan
+Model ..> ReadOnlyModuleData
+ModelManager --> "1" ModulePlan
+ModelManager --> "1" UserPrefs
+ModelManager --> "1" ModuleData
+ModelManager ..> Module
+ModelManager ..> ModuleCode
+ModuleData .up.|> ReadOnlyModuleData
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-ModulePlan *--> "1" UniqueModuleList
-UniqueModuleList --> "~* all" Module
-Module *--> "1" ModuleCode
+ModulePlan *--> "1" ModulePlanSemesterList
+ModulePlanSemesterList --> "~*" ModulePlanSemester
+ModulePlanSemester *-> "1" UniqueModuleList
+ModuleData *--> "1" UniqueModuleList
+UniqueModuleList -> "~*" Module
+
+ModulePlanSemester --> "1" Year
+ModulePlanSemester --> "1" Semester
+
+Module *-> "1" ModuleCode
 Module *--> "1" ModuleName
-Module *--> "1" Grade
-Module *--> "1" ModuleDescription
-Module *--> "1" Year
-Module *--> "1" Semester
+Module *--> "1" ModularCredit
+Module --> "0..1" Grade
+Module *--> "1" Description
+Module --> "0..1" Year
+Module --> "0..1" Semester
 
-Module -[hidden]up--> I
-UniqueModuleList -[hidden]right-> I
+ReadOnlyModulePlan -[hidden]right--> ReadOnlyModuleData
+ReadOnlyModuleData -[hidden]right--> ModelManager
+ModelManager -[hidden]right--> ReadOnlyUserPrefs
 
-ModuleCode -[hidden]right-> ModuleName
-ModuleName -[hidden]right-> ModuleDescription
-ModuleDescription -[hidden]right-> Grade
+Year -[hidden]right-> Semester
+Semester -[hidden]right-> Grade
 
-ModelManager --> "~* filtered" Module
+
 @enduml

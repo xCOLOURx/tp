@@ -8,6 +8,7 @@ Package " "<<Rectangle>>{
     Class UI UI_COLOR
     Class Logic LOGIC_COLOR
     Class Storage STORAGE_COLOR
+    Class Database DATABASE_COLOR
     Class Model MODEL_COLOR
     Class Main #grey
     Class Commons LOGIC_COLOR_T2
@@ -25,7 +26,9 @@ Main -[#grey]-> UI
 Main -[#grey]-> Logic
 Main -[#grey]-> Storage
 Main -up[#grey]-> Model
-Main -down[hidden]-> Commons
+Main -[#grey]-> Database
+Database -down[hidden]-> Commons
+Storage -down[hidden]-> Commons
 
 Storage -up[STORAGE_COLOR].> Model
 Storage .right[STORAGE_COLOR].>File

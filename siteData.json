@@ -49,6 +49,7 @@
         "logic-component": "Logic component",
         "model-component": "Model component",
         "storage-component": "Storage component",
+        "database-component": "Database component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
         "edit-module-feature": "Edit module feature",

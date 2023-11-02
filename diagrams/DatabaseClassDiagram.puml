@@ -1,0 +1,24 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor DATABASE_COLOR
+skinparam classBackgroundColor DATABASE_COLOR
+
+package Database as DatabasePackage {
+
+Class "<<interface>>\nDatabase" as Database
+Class DatabaseManager
+Class JsonSerializableModuleData
+Class JsonAdaptedDbModule
+}
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> Database
+
+DatabaseManager .up.|> Database
+
+DatabaseManager .down.>JsonSerializableModuleData
+
+JsonSerializableModuleData --> "*" JsonAdaptedDbModule
+
+@enduml
