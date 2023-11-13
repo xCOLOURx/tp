@@ -16,6 +16,7 @@ Package " "<<Rectangle>>{
 
 Class "<$user>" as User MODEL_COLOR_T2
 Class "<$documents>" as File UI_COLOR_T1
+Class "<$documents>" as File2 UI_COLOR_T2
 
 
 UI -[#green]> Logic
@@ -32,5 +33,7 @@ Storage -down[hidden]-> Commons
 
 Storage -up[STORAGE_COLOR].> Model
 Storage .right[STORAGE_COLOR].>File
+Database -up[STORAGE_COLOR].> Model
+Database .left[STORAGE_COLOR].>File2
 User ..> UI
 @enduml

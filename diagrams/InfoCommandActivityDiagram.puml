@@ -1,0 +1,36 @@
+@startuml
+skin rose
+skinparam ActivityFontSize 15
+skinparam ArrowFontSize 12
+!pragma useVerticalIf on
+start
+:User enters Info Command;
+
+partition InfoCommandParser {
+
+if () then ([else])
+    :ParseException: Invalid command format;
+    stop
+( [valid module code format]) elseif () then ( [else])
+    :ParseException: Invalid module code format;
+    stop
+else ( [single argument])
+
+endif
+}
+
+partition InfoCommand {
+
+if () then ( [else])
+    :ModuleNotFoundException: No such module exists;
+    stop
+else ( [module code exists in ModuleData]   )
+
+endif
+}
+
+:Info Command is executed successfully.
+Module information is displayed to the user.;
+stop
+
+@enduml

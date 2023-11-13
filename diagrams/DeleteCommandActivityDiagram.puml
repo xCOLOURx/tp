@@ -1,0 +1,40 @@
+@startuml
+skin rose
+skinparam ActivityFontSize 15
+skinparam ArrowFontSize 12
+!pragma useVerticalIf on
+start
+:User enters Delete Command;
+
+partition DeleteCommandParser {
+
+if () then ([else])
+    :ParseException: Invalid command format;
+    stop
+( [single argument]) elseif () then ( [else])
+    :ParseException: Invalid module code format;
+    stop
+else ( [valid module code format])
+
+endif
+}
+
+partition DeleteCommand {
+
+if () then ( [else])
+    :ModuleNotFoundException: No such module exists;
+    stop
+( [module code exists in ModuleData]) elseif () then ( [else])
+    :ModuleNotFoundException: Module has not been added, unable to delete.;
+    stop
+else ( [Module exists in the module plan])
+
+endif
+}
+
+:Delete Command is executed successfully.
+Module is deleted from the module plan.;
+
+stop
+
+@enduml
