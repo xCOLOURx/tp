@@ -1,0 +1,53 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package "ModulePlan     " as ModulePlanPackage <<Rectangle>>{
+
+Class "<<interface>>\nReadOnlyModulePlan" as ReadOnlyModulePlan
+Class ReadOnlyModulePlan
+Class ModulePlan
+Class ModulePlanSemesterList
+Class ModulePlanSemester
+Class UniqueModuleList
+Class Module
+
+Class Description
+Class ModularCredit
+Class Grade
+Class ModuleCode
+Class ModuleName
+Class Year
+Class Semester
+}
+
+
+Class HiddenOutside #FFFFFF
+HiddenOutside ..> ReadOnlyModulePlan
+
+ReadOnlyModulePlan ..> ModulePlan
+
+ModulePlan *--> "1" ModulePlanSemesterList
+ModulePlanSemesterList --> "~*" ModulePlanSemester
+ModulePlanSemester *-> "1" UniqueModuleList
+UniqueModuleList -> "~*" Module
+
+ModulePlanSemester --> "1" Year
+ModulePlanSemester --> "1" Semester
+Module *-> "1" ModuleCode
+Module *--> "1" ModuleName
+Module *--> "1" ModularCredit
+Module --> "0..1" Grade
+Module *--> "1" Description
+Module --> "0..1" Year
+Module --> "0..1" Semester
+
+Year -[hidden]right-> Semester
+Semester -[hidden]right-> Grade
+
+
+
+
+@enduml

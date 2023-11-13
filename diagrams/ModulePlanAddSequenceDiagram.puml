@@ -1,0 +1,71 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+
+box Model MODEL_COLOR_T1
+participant "m:ModulePlan" as ModulePlan MODEL_COLOR
+participant "semesters:ModulePlanSemesterList" as ModulePlanSemesterList MODEL_COLOR
+participant ":ModulePlanSemester" as ModulePlanSemester MODEL_COLOR
+participant "modules:UniqueModuleList" as UniqueModuleList MODEL_COLOR
+end box
+
+[-> ModulePlan : addModule(m)
+activate ModulePlan
+
+ModulePlan -> ModulePlanSemesterList : addModule(m)
+activate ModulePlanSemesterList
+
+ModulePlanSemesterList -> ModulePlanSemesterList : containsModule(m)
+activate ModulePlanSemesterList
+
+deactivate ModulePlanSemesterList
+
+ModulePlanSemesterList -> ModulePlanSemesterList : findSemester(m)
+activate ModulePlanSemesterList
+
+loop for each semester
+
+ModulePlanSemesterList -> ModulePlanSemester : checkModuleBelongToSemester(m)
+activate ModulePlanSemester
+
+ModulePlanSemester --> ModulePlanSemesterList
+deactivate ModulePlanSemester
+
+end
+
+ModulePlanSemesterList --> ModulePlanSemesterList : index
+deactivate ModulePlanSemesterList
+
+ModulePlanSemesterList -> ModulePlanSemester : addModule(m)
+activate ModulePlanSemester
+
+ModulePlanSemester -> UniqueModuleList : add(m)
+activate UniqueModuleList
+
+UniqueModuleList -> UniqueModuleList : contains(m)
+activate UniqueModuleList
+
+deactivate UniqueModuleList
+
+UniqueModuleList --> ModulePlanSemester
+deactivate UniqueModuleList
+
+ModulePlanSemester --> ModulePlanSemesterList
+deactivate ModulePlanSemester
+
+ModulePlanSemesterList -> ModulePlanSemesterList : refreshList(index)
+activate ModulePlanSemesterList
+
+deactivate ModulePlanSemesterList
+
+ModulePlanSemesterList --> ModulePlan
+deactivate ModulePlanSemesterList
+
+[<-- ModulePlan
+deactivate ModulePlan
+
+
+
+@enduml
+
