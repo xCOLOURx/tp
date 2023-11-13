@@ -57,7 +57,6 @@ UniqueModuleList -> "~*" Module
 
 ModulePlanSemester --> "1" Year
 ModulePlanSemester --> "1" Semester
-
 Module *-> "1" ModuleCode
 Module *--> "1" ModuleName
 Module *--> "1" ModularCredit
@@ -65,13 +64,10 @@ Module --> "0..1" Grade
 Module *--> "1" Description
 Module --> "0..1" Year
 Module --> "0..1" Semester
-
 ReadOnlyModulePlan -[hidden]right--> ReadOnlyModuleData
+
 ReadOnlyModuleData -[hidden]right--> ModelManager
 ModelManager -[hidden]right--> ReadOnlyUserPrefs
-
 Year -[hidden]right-> Semester
 Semester -[hidden]right-> Grade
-
-
 @enduml
