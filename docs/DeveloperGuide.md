@@ -25,7 +25,6 @@ Libraries used in this project:
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <br>
-
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -77,7 +76,6 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-<br>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -172,9 +170,6 @@ The `Model` component,
 **Note:** The module plan data is split into different semesters (e.g. Year 1 S1, Year 1 S2, Year 2 S1, etc). Instead of one `UniqueModuleList` storing all of the user's modules across multiple semesters, each semester's modules are stored in their own `UniqueModuleList` object. Nevertheless, modules are required to be unique across semesters, meaning that the same module will be prevented from being added to multiple semesters. The implementation of this check can be found in `ModulePlanSemesterList`.
 
 </box>
-
-<br>
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -306,6 +301,8 @@ The following diagrams shows the flow for the **main uses** of ModulePlan, addin
 **Add Module**: <br>
 
 <puml src="diagrams/ModulePlanAddSequenceDiagram.puml" />
+
+<div style="page-break-after: always;"></div>
 
 **Delete Module**: <br>
 
@@ -479,6 +476,8 @@ offered, an error message will be displayed.
 If the module has already been added the User's module plan, an error message will be displayed.
 6. If all the previous stages complete without exceptions or errors, the `Module` will be added to the `ModulePlan`
 
+<div style="page-break-after: always;"></div>
+
 The activity diagram for adding a `Module` into the module plan
 
 <puml src="diagrams/AddModuleActivityDiagram.puml" width="475" />
@@ -502,6 +501,8 @@ The following two *Sequence Diagrams* shows how the `add` command works:
 Here is the *Sequence Diagram* showing how the parser works:
 
 <puml src="diagrams/AddParseSequenceDiagram.puml" />
+
+<div style="page-break-after: always;"></div>
 
 And here is the *Sequence Diagram* showing the command being executed:
 
@@ -531,6 +532,8 @@ We shall now illustrate how `EditModuleDescriptor` is used.
 Here is a *Sequence Diagram* showing the parser in action:
 
 <puml src="diagrams/EditParseSequenceDiagram.puml" />
+
+<div style="page-break-after: always;"></div>
 
 And here is a *Sequence Diagram* showing the command being executed:
 
@@ -563,6 +566,8 @@ The format of the `delete` command can be found [here](https://ay2324s1-cs2103t-
 7. If all previous steps are completed without exceptions, the new `Module` will be successfully deleted from the module plan.
 
 <br>
+
+<div style="page-break-after: always;"></div>
 
 The following activity diagrams show the logic of deleting a `Module` from the module plan:
 
@@ -608,6 +613,8 @@ The format of the `info` command can be found [here](https://ay2324s1-cs2103t-t1
 3. A `ParseException` is thrown if either of the above checks fail. Otherwise, an `InfoCommand` object will be created and executed.
 4. The `InfoCommand` verifies that the module code exists in `ModuleData`. Otherwise, `ModuleNotFoundException` will be thrown.
 5. The `Module` is retrieved from the database and the information is displayed to the user.
+
+<div style="page-break-after: always;"></div>
 
 This is shown through the following activity diagram:
 
@@ -829,6 +836,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | tryhard student                                                        | see what modules are available in the special term                                          |                                                              |
 
 <br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -1044,6 +1052,7 @@ Use case resumes from step 2.
 3. Should be able to hold up to 1,000,000 courses without a noticeable sluggishness in performance for typical usage.
 
 <br>
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Glossary
