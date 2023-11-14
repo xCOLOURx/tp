@@ -4,12 +4,11 @@ skinparam ArrowFontStyle plain
 
 box Logic LOGIC_COLOR_T1
 participant "a:AddCommand" as AddCommand LOGIC_COLOR
-participant "<<class>>\nAddCommand" as AddCommandClass LOGIC_COLOR
-participant "m:Module" as Module LOGIC_COLOR
 participant "result:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
+participant "m:Module" as Module MODEL_COLOR
 participant ":Model" as Model MODEL_COLOR
 end box
 
@@ -22,22 +21,17 @@ activate Model
 Model --> AddCommand : moduleToAdd
 deactivate Model
 
-AddCommand -> AddCommand : fillUserInputs(year, semester, grade)
-activate AddCommand
-
 create Module
-AddCommand -> Module
+AddCommand -> Module : fillUserInputs(year, semester, grade)
 activate Module
-Module --> AddCommand: m
+
+Module --> AddCommand : m
 deactivate Module
 
-AddCommand --> AddCommand: moduleToAdd
-deactivate AddCommand
-
-AddCommand -> Model : addModule(moduleToAdd)
+AddCommand -> Model : addModule(m)
 activate Model
 
-Model --> AddCommand : newModule
+Model --> AddCommand
 deactivate Model
 
 create CommandResult
