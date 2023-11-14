@@ -3,6 +3,8 @@ layout: default.md
 title: "Kyle Zheng Ching Chan's Project Portfolio Page"
 ---
 
+# Kyle's Project Portfolio Page
+
 ### Project: ModCraft
 
 ModCraft is an app that provides a fast and easy way for students to track courses
@@ -47,7 +49,7 @@ Click [here](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=&sort=gr
 
 #### Community:
 
-* PR Reviewed: 29
+* PR Reviewed: 33
   * PR Reviewed with non-trivial review comment: #108, #113, #131, #227
 * Reported 10 bugs for group [CS2103T-W15-3](https://github.com/AY2324S1-CS2103T-W15-3/tp/issues?q=is%3Aissue+%5BPE-D%5D%5BTester+E%5D+) during PED.
 
