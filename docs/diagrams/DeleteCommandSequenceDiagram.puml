@@ -7,13 +7,8 @@ participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":ModulePlanParser" as ModulePlanParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
 participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
-participant "result:CommandResult" as CommandResult LOGIC_COLOR
 end box
 
-box Model MODEL_COLOR_T1
-participant "m:Module" as Module MODEL_COLOR
-participant "model:Model" as Model MODEL_COLOR
-end box
 [-> LogicManager : execute("delete CS3230")
 activate LogicManager
 
@@ -49,34 +44,11 @@ deactivate ModulePlanParser
 LogicManager -> DeleteCommand : execute(model)
 activate DeleteCommand
 
-DeleteCommand -> Model : checkDbValidModuleCode("CS3230")
-activate Model
-
-Model --> DeleteCommand
-deactivate Model
-
-DeleteCommand -> Model : getModule("CS3230")
-activate Model
-
-Model --> DeleteCommand : targetMod
-deactivate Model
-
-DeleteCommand -> Model : deleteModule(targetMod)
-activate Model
-
-Model --> DeleteCommand
-deactivate Model
-
-create CommandResult
-DeleteCommand -> CommandResult
-activate CommandResult
-
-CommandResult --> DeleteCommand
-deactivate CommandResult
+ref over DeleteCommand : Execute delete command
 
 DeleteCommand --> LogicManager : result
 deactivate DeleteCommand
-DeleteCommand -[hidden]-> LogicManager : result
+DeleteCommand -[hidden]-> LogicManager
 destroy DeleteCommand
 
 [<--LogicManager : result
