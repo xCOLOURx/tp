@@ -376,9 +376,9 @@ execution.
 
 This can be seen in the sequence diagram below
 
-<puml src="diagrams/StorageInitSequenceDiagram.puml" />
-<puml src="diagrams/StorageInitUserPrefSequenceDiagram.puml" />
-<puml src="diagrams/StorageInitStorageManagerSequenceDiagram.puml" />
+<puml src="diagrams/StorageInitSequenceDiagram.puml" width="600"/>
+<puml src="diagrams/StorageInitUserPrefSequenceDiagram.puml" width="5500" />
+<puml src="diagrams/StorageInitStorageManagerSequenceDiagram.puml" width="400"/>
 <puml src="diagrams/StorageInitModulePlanSequenceDiagram.puml" />
 
 
@@ -545,7 +545,6 @@ The following activity diagrams show the logic of deleting a `Module` from the m
 
 <puml src="diagrams/DeleteCommandActivityDiagram.puml" width="600" />
 
-<puml src="diagrams/DeleteCommandActivityDiagram2.puml" width="600" />
 
 <br>
 
@@ -562,6 +561,8 @@ e.g. `delete CS3230`
 The following sequence diagram shows how the `delete` command works:
 
 <puml src="diagrams/DeleteCommandSequenceDiagram.puml" />
+
+<puml src="diagrams/DeleteCommandSequenceDiagram2.puml" width="600" />
 
 <br>
 
