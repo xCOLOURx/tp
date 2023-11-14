@@ -28,6 +28,8 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Design**
 
 ### Architecture
@@ -79,6 +81,8 @@ The sections below give more details of each component.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### UI component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2324S1-CS2103T-T13-0/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -99,6 +103,8 @@ The `UI` component,
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Logic component
 
@@ -145,6 +151,8 @@ How the parsing works:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2324S1-CS2103T-T13-0/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
@@ -188,6 +196,8 @@ The `Storage` component,
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Database component
 
 **API** : [`Database.java`](https://github.com/AY2324S1-CS2103T-T13-0/tp/blob/master/src/main/java/seedu/address/database/Database.java)
@@ -219,6 +229,8 @@ Classes used by multiple components are in the [`seedu.address.commons`](https:/
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features and commands are implemented.
@@ -236,8 +248,9 @@ This section describes some noteworthy details on how certain features and comma
 
 <br>
 
-
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Module Plan
 
@@ -323,6 +336,8 @@ Alternative 1 is ultimately chosen as it helps abstracts out the logic for diffe
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Module Storage
 
 #### Overview
@@ -376,9 +391,9 @@ execution.
 
 This can be seen in the sequence diagram below
 
-<puml src="diagrams/StorageInitSequenceDiagram.puml" width="600"/>
-<puml src="diagrams/StorageInitUserPrefSequenceDiagram.puml" width="5500" />
-<puml src="diagrams/StorageInitStorageManagerSequenceDiagram.puml" width="400"/>
+<puml src="diagrams/StorageInitSequenceDiagram.puml" />
+<puml src="diagrams/StorageInitUserPrefSequenceDiagram.puml" width="550" />
+<puml src="diagrams/StorageInitStorageManagerSequenceDiagram.puml" width="550"/>
 <puml src="diagrams/StorageInitModulePlanSequenceDiagram.puml" />
 
 
@@ -386,6 +401,8 @@ This can be seen in the sequence diagram below
 
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Module Data
 
@@ -442,6 +459,8 @@ In such cases where the data cannot be read successfully, a `RuntimeException` i
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Add Module Command
 
 #### Overview
@@ -493,6 +512,8 @@ And here is the *Sequence Diagram* showing the command being executed:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Edit Module Command
 
 #### Overview
@@ -520,6 +541,8 @@ As can be seen, this is a helpful class to store fields that need to be edited.
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Delete Module Command
 
@@ -568,6 +591,8 @@ The following sequence diagram shows how the `delete` command works:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Info Module Command
 
 #### Overview
@@ -595,6 +620,8 @@ During command execution, the `info` command calls `Module#toInfoString`, as sho
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Calculate CAP Command
 
@@ -626,6 +653,8 @@ The following sequence diagram shows how the `calculateCAP` command works:
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Calculate MC Command
 
 #### Overview
@@ -655,6 +684,8 @@ The following sequence diagram shows how the `calculateMC` command works:
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### \[Proposed\] Pre-requisite checking feature
 
@@ -701,6 +732,8 @@ The following activity diagram summarizes what happens when a user executes a co
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## **Future enhancements**
 
 For our next steps, we plan to add the following features:
@@ -727,6 +760,8 @@ For our next steps, we plan to add the following features:
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Requirements**
 
@@ -795,6 +830,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <br>
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Use cases
 
@@ -998,6 +1035,8 @@ Steps 1b1 and 1b2 are repeated until the user inputs the correct module code.
 Use case resumes from step 2.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 ### Non-Functional Requirements
 
 1. Should work on any mainstream OS as long as it has Java 11 or above installed.
@@ -1021,6 +1060,8 @@ Where pre-requisites are specified, equivalent courses will also be accepted. Fo
 <br>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Instructions for manual testing**
 
