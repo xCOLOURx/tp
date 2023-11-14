@@ -539,7 +539,7 @@ The following activity diagrams show the logic of deleting a `Module` from the m
 
 <puml src="diagrams/DeleteCommandActivityDiagram2.puml" width="600" />
 
-<br>  
+<br>
 
 The sequence of the `delete` command is as follows:<br>
 
