@@ -540,6 +540,7 @@ The format of the `delete` command can be found [here](https://ay2324s1-cs2103t-
 The following activity diagrams show the logic of deleting a `Module` from the module plan:
 
 <puml src="diagrams/DeleteCommandActivityDiagram.puml" width="600" />
+
 <puml src="diagrams/DeleteCommandActivityDiagram2.puml" width="600" />
 
 <br>

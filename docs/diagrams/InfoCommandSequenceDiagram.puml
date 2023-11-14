@@ -36,6 +36,7 @@ deactivate CommandResult
 
 [<-- InfoCommand : result
 deactivate InfoCommand
+InfoCommand -[hidden]-> CommandResult
 destroy InfoCommand
 
 @enduml
