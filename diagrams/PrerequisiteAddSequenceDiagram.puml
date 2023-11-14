@@ -1,0 +1,40 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Model MODEL_COLOR_T1
+participant ":ModulePlanSemesterList" as ModulePlanSemesterList MODEL_COLOR
+participant ":ModulePlanSemester" as ModulePlanSemester MODEL_COLOR
+participant ":Module" as Module MODEL_COLOR
+participant ":Prerequisite" as Prerequisite MODEL_COLOR
+end box
+
+[-> ModulePlanSemesterList : addModule(CS2030S)
+activate ModulePlanSemesterList
+
+loop semesters before the one CS2030S is added to
+
+ModulePlanSemesterList -> ModulePlanSemester : getModuleList()
+activate ModulePlanSemester
+
+ModulePlanSemester --> ModulePlanSemesterList : list
+deactivate ModulePlanSemester
+
+end
+
+ModulePlanSemesterList -> Module : checkPrerequisitesFulfilled(combinedList)
+activate Module
+
+Module -> Prerequisite : isFulfilled(List<Module> list)
+activate Prerequisite
+
+Prerequisite --> Module
+deactivate Prerequisite
+
+Module --> ModulePlanSemesterList
+deactivate Module
+
+[<--ModulePlanSemesterList
+deactivate ModulePlanSemesterList
+
+@enduml

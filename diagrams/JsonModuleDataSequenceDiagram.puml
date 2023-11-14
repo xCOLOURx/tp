@@ -1,0 +1,67 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Database DATABASE_COLOR_T1
+participant ":DatabaseManager" as DatabaseManager DATABASE_COLOR
+participant "jsonData:JsonSerializableModuleData" as JsonSerializableModuleData DATABASE_COLOR
+participant "j:JsonAdaptedDbModule" as JsonAdaptedDbModule DATABASE_COLOR
+participant "list:List<JsonAdaptedDbModule>" as JsonAdaptedDbModuleList DATABASE_COLOR
+end box
+
+box Commons LOGIC_COLOR_T1
+participant "<<class>>\nJsonutil" as JsonUtil LOGIC_COLOR_T2
+end box
+
+[-> DatabaseManager : readDatabase()
+activate DatabaseManager
+
+DatabaseManager -> JsonUtil : readJsonResource(filePath)
+activate JsonUtil
+
+create JsonAdaptedDbModuleList
+JsonUtil -> JsonAdaptedDbModuleList
+activate JsonAdaptedDbModuleList
+
+JsonAdaptedDbModuleList --> JsonUtil : list
+deactivate JsonAdaptedDbModuleList
+
+loop for each module
+
+create JsonAdaptedDbModule
+JsonUtil -> JsonAdaptedDbModule
+activate JsonAdaptedDbModule
+
+JsonAdaptedDbModule --> JsonUtil : j
+deactivate JsonAdaptedDbModule
+
+JsonUtil -> JsonAdaptedDbModuleList : add(j)
+activate JsonAdaptedDbModuleList
+
+JsonAdaptedDbModuleList --> JsonUtil
+deactivate JsonAdaptedDbModuleList
+
+end
+
+create JsonSerializableModuleData
+JsonUtil -> JsonSerializableModuleData : new JsonSerializableModuleData(list)
+activate JsonSerializableModuleData
+
+JsonSerializableModuleData --> JsonUtil : jsonData
+deactivate JsonSerializableModuleData
+
+JsonUtil --> DatabaseManager: jsonData
+deactivate JsonUtil
+
+DatabaseManager -> JsonSerializableModuleData : toModelType()
+activate JsonSerializableModuleData
+
+ref over JsonSerializableModuleData, JsonAdaptedDbModule : Get moduleData
+
+JsonSerializableModuleData --> DatabaseManager : moduleData
+deactivate JsonSerializableModuleData
+
+[<-- DatabaseManager : moduleData
+deactivate DatabaseManager
+
+@enduml

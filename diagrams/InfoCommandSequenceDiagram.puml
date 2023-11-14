@@ -1,0 +1,42 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant "i:InfoCommand" as InfoCommand LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "model:Model" as Model MODEL_COLOR
+participant "module:Module" as Module MODEL_COLOR
+end box
+
+[-> InfoCommand : execute(model)
+activate InfoCommand
+
+InfoCommand -> Model : getModuleFromDb("CS2103T")
+activate Model
+
+Model --> InfoCommand : module
+deactivate Model
+
+InfoCommand -> Module : toInfoString()
+activate Module
+
+Module --> InfoCommand : infoString
+deactivate Module
+
+create CommandResult
+InfoCommand -> CommandResult : new CommandResult(infoString)
+activate CommandResult
+
+CommandResult --> InfoCommand : result
+deactivate CommandResult
+
+[<-- InfoCommand : result
+deactivate InfoCommand
+InfoCommand -[hidden]-> CommandResult
+destroy InfoCommand
+
+@enduml

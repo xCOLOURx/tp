@@ -11,13 +11,15 @@ start
 
  partition AddCommandParser{
     if () then ([else])
-        :ParseException: Invalid module code format;
-           stop
-
-    ( [valid module code format]) elseif () then ( [else])
         :ParseException: Invalid command format;
+           stop
+    ( [all prefixes present]) elseif () then ( [else])
+        :ParseException: Duplicate prefixes;
+           stop
+    ( [no duplicate prefixes]) elseif () then ( [else])
+        :ParseException: Invalid parameter;
         stop
-    else ( [valid command format])
+    else ( [valid parameters])
 
     endif
 }
@@ -35,8 +37,8 @@ else ( [module not in ModulePlan] )
 endif
 }
 
-:Add Command is executed successfully
-Module is added to ModulePlan;
+:Add Command is executed successfully.
+Module is added to ModulePlan.;
 stop
 
 

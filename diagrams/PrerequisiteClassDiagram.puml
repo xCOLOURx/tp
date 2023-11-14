@@ -1,0 +1,19 @@
+@startuml
+!include style.puml
+show members
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package "Model                 " as ModelPackage <<Rectangle>>{
+Class Module
+Class Prerequisite {
+    {field} toFulfill: int
+}
+}
+
+Module --> "1" Prerequisite
+Prerequisite --> "*" Prerequisite : satisfied by >
+Module -up-|> Prerequisite
+
+@enduml

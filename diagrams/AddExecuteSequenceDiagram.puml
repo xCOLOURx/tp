@@ -1,0 +1,47 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant "a:AddCommand" as AddCommand LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Module" as Module MODEL_COLOR
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> AddCommand : execute()
+activate AddCommand
+
+AddCommand -> Model : getModule("CS2040S")
+activate Model
+
+Model --> AddCommand : moduleToAdd
+deactivate Model
+
+create Module
+AddCommand -> Module : fillUserInputs(year, semester, grade)
+activate Module
+
+Module --> AddCommand : m
+deactivate Module
+
+AddCommand -> Model : addModule(m)
+activate Model
+
+Model --> AddCommand
+deactivate Model
+
+create CommandResult
+AddCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddCommand : result
+deactivate CommandResult
+
+[<-- AddCommand : result
+deactivate AddCommand
+
+@enduml

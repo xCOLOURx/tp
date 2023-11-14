@@ -1,0 +1,53 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+mainframe sd Parse delete command
+
+box Logic LOGIC_COLOR_T1
+participant ":ModulePlanParser" as ModulePlanParser LOGIC_COLOR
+participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
+participant ":ParserUtil" as ParserUtil LOGIC_COLOR
+participant ":ModuleCode" as ModuleCode LOGIC_COLOR
+participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
+end box
+
+activate ModulePlanParser
+
+create DeleteCommandParser
+ModulePlanParser -> DeleteCommandParser
+activate DeleteCommandParser
+
+DeleteCommandParser --> ModulePlanParser
+deactivate DeleteCommandParser
+
+ModulePlanParser -> DeleteCommandParser : parse("CS2030S")
+activate DeleteCommandParser
+
+create ParserUtil
+DeleteCommandParser -> ParserUtil : parseModuleCode("CS2030S")
+activate ParserUtil
+
+create ModuleCode
+ParserUtil -> ModuleCode
+activate ModuleCode
+ModuleCode --> ParserUtil
+deactivate ModuleCode
+
+ParserUtil --> DeleteCommandParser : moduleCode
+deactivate ParserUtil
+
+create DeleteCommand
+DeleteCommandParser -> DeleteCommand : moduleCode
+activate DeleteCommand
+
+DeleteCommand --> DeleteCommandParser : d
+deactivate DeleteCommand
+
+DeleteCommandParser --> ModulePlanParser : d
+deactivate DeleteCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+DeleteCommandParser -[hidden]-> ModulePlanParser
+destroy DeleteCommandParser
+
+@enduml

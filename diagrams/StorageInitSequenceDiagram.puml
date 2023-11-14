@@ -1,0 +1,35 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Main LOGIC_COLOR_T2
+participant ":MainApp" as MainApp LOGIC_COLOR_T2
+
+box Database DATABASE_COLOR_T1
+participant "ups:UserPrefsStorage" as UserPrefsStorage DATABASE_COLOR
+participant "mps:ModulePlanStorage" as ModulePlanStorage DATABASE_COLOR
+end box
+
+box Storage MODEL_COLOR_T2
+participant "storage:StorageManager" as StorageManager MODEL_COLOR_T2
+
+
+
+box Commons LOGIC_COLOR_T1
+participant "<<class>>\nJsonutil" as JsonUtil LOGIC_COLOR_T2
+end box
+
+[-> MainApp :
+activate MainApp
+
+ref over MainApp, UserPrefsStorage, JsonUtil : Init User Pref
+
+ref over MainApp, ModulePlanStorage, StorageManager: Init Storage Manager
+
+ref over MainApp, ModulePlanStorage, JsonUtil : Init Module Plan
+
+
+[<-- MainApp :
+deactivate MainApp
+
+@enduml

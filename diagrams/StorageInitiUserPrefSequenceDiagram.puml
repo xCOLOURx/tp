@@ -1,0 +1,58 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+mainframe sd Init User Pref
+
+box Main LOGIC_COLOR_T2
+participant ":MainApp" as MainApp LOGIC_COLOR_T2
+
+box Database DATABASE_COLOR_T1
+participant "ups:UserPrefsStorage" as UserPrefsStorage DATABASE_COLOR
+participant "up:UserPrefs" as UserPrefs DATABASE_COLOR
+end box
+
+box Commons LOGIC_COLOR_T1
+participant "<<class>>\nJsonutil" as JsonUtil LOGIC_COLOR_T2
+end box
+
+activate MainApp
+
+MainApp -> MainApp : initConfig(config)
+activate MainApp
+MainApp --> MainApp : config
+deactivate MainApp
+
+MainApp -> UserPrefsStorage : JsonUserPrefsStorage()
+activate UserPrefsStorage
+
+UserPrefsStorage --> MainApp : ups
+deactivate UserPrefsStorage
+
+MainApp -> MainApp : initPrefs(ups)
+activate MainApp
+
+MainApp -> UserPrefsStorage : ups.readUserPrefs()
+activate UserPrefsStorage
+
+UserPrefsStorage -> JsonUtil : readJsonFile(filePath, SerializableModulePlan.class)
+activate JsonUtil
+
+create UserPrefs
+JsonUtil -> UserPrefs
+activate UserPrefs
+
+UserPrefs --> JsonUtil : up
+deactivate UserPrefs
+
+JsonUtil --> UserPrefsStorage : up
+deactivate JsonUtil
+
+UserPrefsStorage --> MainApp : up
+deactivate UserPrefsStorage
+
+MainApp --> MainApp : up
+deactivate MainApp
+
+
+@enduml

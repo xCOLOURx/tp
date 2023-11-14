@@ -1,0 +1,43 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
+participant ":ParserUtil" as ParserUtil LOGIC_COLOR
+participant "a:AddCommand" as AddCommand LOGIC_COLOR
+end box
+
+[-> AddCommandParser : parse("add CS2040S y/1 s/1 g/A")
+activate AddCommandParser
+
+create ParserUtil
+AddCommandParser -> ParserUtil : parseModuleCode("CS2040S")
+activate ParserUtil
+ParserUtil --> AddCommandParser : moduleCode:ModuleCode
+
+AddCommandParser -> ParserUtil : parseModuleCode("1")
+ParserUtil --> AddCommandParser : moduleCode:ModuleCode
+
+AddCommandParser -> ParserUtil : parseModuleCode("1")
+ParserUtil --> AddCommandParser : moduleCode:ModuleCode
+
+AddCommandParser -> ParserUtil : parseModuleCode("A")
+ParserUtil --> AddCommandParser : moduleCode:ModuleCode
+
+deactivate ParserUtil
+
+create AddCommand
+AddCommandParser -> AddCommand : new AddCommand("CS2040S", amd)
+activate AddCommand
+
+AddCommand --> AddCommandParser : a
+deactivate AddCommand
+
+[<-- AddCommandParser : a
+deactivate AddCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+[<-[hidden]- AddCommandParser
+destroy AddCommandParser
+
+@enduml

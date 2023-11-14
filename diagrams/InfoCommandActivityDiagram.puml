@@ -11,10 +11,10 @@ partition InfoCommandParser {
 if () then ([else])
     :ParseException: Invalid command format;
     stop
-( [valid module code format]) elseif () then ( [else])
+( [single argument]) elseif () then ( [else])
     :ParseException: Invalid module code format;
     stop
-else ( [single argument])
+else ( [valid module code format])
 
 endif
 }
