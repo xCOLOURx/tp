@@ -66,6 +66,8 @@ Warnings in boxes like this contain information that are vital to the running of
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java 11 or above installed in your Computer.
@@ -82,6 +84,7 @@ As ModCraft writes to files within the directory it is in, we recommend placing 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar ModCraft.jar` command to run the application. A GUI similar to below should appear in a few seconds. Note how the app contains some sample data.<br> <br>
    ![StartUp](images/ImagesForUG/StartUp.png)
 
+<div style="page-break-after: always;"></div>
 
 5. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -101,6 +104,8 @@ As ModCraft writes to files within the directory it is in, we recommend placing 
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -131,6 +136,8 @@ As ModCraft writes to files within the directory it is in, we recommend placing 
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Viewing help: `help`
 
 Displays to you a popup explaining how to access the User Guide of ModCraft, as shown below.
@@ -150,6 +157,8 @@ help
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### <span style="text-decoration:underline">Modules</span>
 
 The modules in ModCraft are [courses from National University of Singapore (NUS)](https://nusmods.com/courses?sem[0]=1&sem[1]=2&sem[2]=3&sem[3]=4). The modules have **Module Code**, **Module Title**, **Module Description** and **Modular Credits**.
@@ -167,6 +176,8 @@ The Module Code, Module Title, Module Description and Modular Credits **cannot**
 </md></div>
 
 <br>
+
+<div style="page-break-after: always;"></div>
 
 In ModCraft, you can specify the **Year**, **Semester** and **Grade** of each module when you are adding or editing your study plan.
 
@@ -191,6 +202,8 @@ In ModCraft, you can specify the **Year**, **Semester** and **Grade** of each mo
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
 The images below show you the process for adding a module to the Advance Placement semester in ModCraft. The module `CS1010` is being added to Year 0 (the Advance Placement semester).
 
 <div style="display:flex; justify-content:space-around; align-items:center;">
@@ -208,6 +221,8 @@ The images below show you the process for adding a module to the Advance Placeme
 
 <br>
 
+<div style="page-break-after: always;"></div>
+
 The images below show you the process for adding a module to one of the Special Term (ST) in ModCraft. The module `CS3230` is being added to Year 1, Special Term 1.
 
 <div style="display:flex; justify-content:space-around; align-items:center;">
@@ -223,6 +238,7 @@ The images below show you the process for adding a module to one of the Special 
 </figure>
 </div>
 
+<div style="page-break-after: always;"></div>
 
 <div class="alert alert-danger"><md>:exclamation: **Caution:**
 Currently, ModCraft has certain **limitations**.
@@ -248,6 +264,8 @@ These features are [planned enhancements](https://ay2324s1-cs2103t-t13-0.github.
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a module: `add`
 
@@ -293,6 +311,8 @@ The images below show you the `add` command in action.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Editing a module: `edit`
 
 You can change an attribute of a module using this command. This command works **only if the module has already been added**.
@@ -313,6 +333,8 @@ If before editing, the module was in Year 2 Semester 1, after editing it would b
 * `edit CS2101 s/1`: Moves CS2101 to the Semester 1 module list, with **Year unchanged**.<br>
 If before editing, the module was in Year 1 Semester 2, after editing it would be in Year 1 Semester 1.
 </md></div>
+
+<div style="page-break-after: always;"></div>
 
 The images below show you the `edit` command in action. The grade of `CS1101S` is being edited to `C`.
 
@@ -338,6 +360,8 @@ You need to provide **at least one** of the optional fields (i.e. `GRADE`, `YEAR
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Deleting a module: `delete`
 
@@ -368,6 +392,8 @@ The images below show you the `delete` command in action. The module `CS2101` is
   </figure>
 </div>
 
+<div style="page-break-after: always;"></div>
+
 <div class="alert alert-primary"><md>:bulb: **Tip:**
 
 * If you are **dropping a module** and retaking it in later semesters, the module dropped should be **deleted** before adding the same module to another semester later on.
@@ -386,6 +412,8 @@ Deleting a module also **deletes all the information associated with the module*
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Finding information about a module: `info`
 
@@ -409,9 +437,9 @@ The image below show you what ModCraft should look like after executing the `inf
 <div style="display:flex; justify-content:space-around; align-items:center;">
   <img src="images/ImagesForUG/info-after.png" alt="After executing info command" style="height:400px; margin:20px;">
 </div>
-<p style="text-align: center;">
+<p style="text-align: center;"><md>
     The command `info CS3230` is executed. Information about the module `CS3230` is displayed.
-</p>
+</md></p>
 
 <div class="alert alert-success"><md>:information_source: **Note:** The module information is taken from [NUSmods](https://github.com/nusmodifications/nusmods) for the current Academic Year 23/24.
 </md></div>
@@ -421,6 +449,8 @@ The image below show you what ModCraft should look like after executing the `inf
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Calculating the total current CAP: `calculateCAP`
 
@@ -440,7 +470,6 @@ Displays you a `float` of `0.0` $\leq$ value $\leq$ `5.0`.
 calculateCAP
 ```
 
-
 Here is an example output after executing the `calculateCAP` command:
 
 ```
@@ -457,6 +486,8 @@ The result displayed by the `calculateCAP` command **does not include** the modu
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Calculating the total current Modular Credits (MCs): `calculateMC`
 
@@ -484,6 +515,8 @@ regardless of the grade.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Exiting the program: `exit`
 
 You can exit ModCraft using this command.
@@ -498,6 +531,8 @@ exit
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Advanced use
 
@@ -519,6 +554,8 @@ Advanced users are welcome to update data directly by editing that data file.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## FAQ
 
 | **Question**                                   | **Answer**                                                                                                                                                       |
@@ -536,6 +573,8 @@ Advanced users are welcome to update data directly by editing that data file.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Known issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
@@ -546,6 +585,8 @@ Advanced users are welcome to update data directly by editing that data file.
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 
@@ -565,6 +606,8 @@ Advanced users are welcome to update data directly by editing that data file.
 [&uarr; Back to Table of Contents](#table-of-contents)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Glossary
 
