@@ -1,0 +1,33 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+mainframe sd Init Storage Manager
+
+box Main LOGIC_COLOR_T2
+participant ":MainApp" as MainApp LOGIC_COLOR_T2
+
+box Database DATABASE_COLOR_T1
+participant "mps:ModulePlanStorage" as ModulePlanStorage DATABASE_COLOR
+end box
+
+box Storage MODEL_COLOR_T2
+participant "storage:StorageManager" as StorageManager MODEL_COLOR_T2
+
+activate MainApp
+
+MainApp -> ModulePlanStorage
+activate ModulePlanStorage
+
+ModulePlanStorage --> MainApp : mps
+deactivate ModulePlanStorage
+
+
+MainApp -> StorageManager : StorageManager(ModulePlanStorage, UserPrefsStorage)
+activate StorageManager
+
+StorageManager --> MainApp : storage
+deactivate StorageManager
+
+
+@enduml

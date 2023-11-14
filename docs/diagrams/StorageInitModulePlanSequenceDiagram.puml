@@ -1,0 +1,70 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+mainframe sd Init Module Plan
+
+box Main LOGIC_COLOR_T2
+participant ":MainApp" as MainApp LOGIC_COLOR_T2
+
+box Database DATABASE_COLOR_T1
+participant "mp:ModulePlan" as ModulePlan DATABASE_COLOR
+participant "jsonModulePlan:JsonSerializableModulePlan" as SerializableModulePlan DATABASE_COLOR
+participant "mps:ModulePlanStorage" as ModulePlanStorage DATABASE_COLOR
+end box
+
+
+box Model MODEL_COLOR_T1
+participant "plan:ModulePlan" as ModulePlan MODEL_COLOR_T1
+end box
+
+box Commons LOGIC_COLOR_T1
+participant "<<class>>\nJsonutil" as JsonUtil LOGIC_COLOR_T2
+end box
+
+activate MainApp
+
+
+MainApp -> MainApp : initModelManager()
+activate MainApp
+
+MainApp -> ModulePlanStorage : readModulePlan()
+activate ModulePlanStorage
+
+ModulePlanStorage -> JsonUtil : readJsonFile(filePath, ModulePlanStorage.class)
+activate JsonUtil
+
+create SerializableModulePlan
+JsonUtil -> SerializableModulePlan
+activate SerializableModulePlan
+
+
+
+SerializableModulePlan --> JsonUtil : jsonModulePlan
+deactivate SerializableModulePlan
+
+JsonUtil --> ModulePlanStorage : jsonModulePlan
+deactivate JsonUtil
+
+ModulePlanStorage ->  SerializableModulePlan : toModelType()
+activate SerializableModulePlan
+
+create ModulePlan
+SerializableModulePlan -> ModulePlan
+activate ModulePlan
+
+ModulePlan --> SerializableModulePlan : mp
+deactivate ModulePlan
+
+
+SerializableModulePlan --> ModulePlanStorage : mp
+deactivate SerializableModulePlan
+
+ModulePlanStorage --> MainApp : mp
+deactivate ModulePlanStorage
+
+MainApp --> MainApp : model
+
+deactivate MainApp
+
+@enduml

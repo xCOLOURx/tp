@@ -377,6 +377,10 @@ execution.
 This can be seen in the sequence diagram below
 
 <puml src="diagrams/StorageInitSequenceDiagram.puml" />
+<puml src="diagrams/StorageInitUserPrefSequenceDiagram.puml" />
+<puml src="diagrams/StorageInitStorageManagerSequenceDiagram.puml" />
+<puml src="diagrams/StorageInitModulePlanSequenceDiagram.puml" />
+
 
 <br>
 

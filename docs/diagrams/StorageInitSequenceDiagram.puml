@@ -7,21 +7,13 @@ participant ":MainApp" as MainApp LOGIC_COLOR_T2
 
 box Database DATABASE_COLOR_T1
 participant "ups:UserPrefsStorage" as UserPrefsStorage DATABASE_COLOR
-participant "up:UserPrefs" as UserPrefs DATABASE_COLOR
 participant "mps:ModulePlanStorage" as ModulePlanStorage DATABASE_COLOR
-participant "mp:ModulePlan" as ModulePlan DATABASE_COLOR
-participant "jsonModulePlan:JsonSerializableModulePlan" as SerializableModulePlan DATABASE_COLOR
-participant ":JsonAdaptedModule" as JsonAdaptedModule DATABASE_COLOR
 end box
 
 box Storage MODEL_COLOR_T2
 participant "storage:StorageManager" as StorageManager MODEL_COLOR_T2
 
 
-box Model MODEL_COLOR_T1
-participant "m:Module" as Module MODEL_COLOR_T1
-participant "plan:ModulePlan" as ModulePlan MODEL_COLOR_T1
-end box
 
 box Commons LOGIC_COLOR_T1
 participant "<<class>>\nJsonutil" as JsonUtil LOGIC_COLOR_T2
@@ -30,127 +22,14 @@ end box
 [-> MainApp :
 activate MainApp
 
-MainApp -> MainApp : initConfig(config)
-activate MainApp
-MainApp --> MainApp : config
-deactivate MainApp
+ref over MainApp, UserPrefsStorage, JsonUtil : Init User Pref
 
-MainApp -> UserPrefsStorage : JsonUserPrefsStorage()
-activate UserPrefsStorage
+ref over MainApp, ModulePlanStorage, StorageManager: Init Storage Manager
 
-UserPrefsStorage --> MainApp : ups
-deactivate UserPrefsStorage
-
-MainApp -> MainApp : initPrefs(config)
-activate MainApp
-
-MainApp -> UserPrefsStorage : ups.readUserPrefs()
-activate UserPrefsStorage
-
-UserPrefsStorage -> JsonUtil : readJsonFile(filePath, SerializableModulePlan.class)
-activate JsonUtil
-
-JsonUtil -> UserPrefs
-activate UserPrefs
-
-UserPrefs --> JsonUtil : up
-deactivate UserPrefs
-
-JsonUtil --> UserPrefsStorage : up
-deactivate JsonUtil
-
-UserPrefsStorage --> MainApp : up
-deactivate UserPrefsStorage
-
-MainApp --> MainApp : up
-
-MainApp -> ModulePlanStorage
-activate ModulePlanStorage
-
-ModulePlanStorage --> MainApp : mps
-deactivate ModulePlanStorage
-
-deactivate MainApp
-
-MainApp -> StorageManager : StorageManager(ModulePlanStorage, UserPrefsStorage)
-activate StorageManager
-
-StorageManager --> MainApp : storage
-deactivate StorageManager
+ref over MainApp, ModulePlanStorage, JsonUtil : Init Module Plan
 
 
-MainApp -> MainApp : initModelManager()
-activate MainApp
-
-MainApp -> StorageManager : readModulePlan()
-activate StorageManager
-
-StorageManager -> ModulePlanStorage : readModulePlan(filePath)
-deactivate StorageManager
-activate ModulePlanStorage
-
-ModulePlanStorage -> JsonUtil : readJsonFile(filePath, ModulePlanStorage.class)
-activate JsonUtil
-
-create SerializableModulePlan
-JsonUtil -> SerializableModulePlan
-activate SerializableModulePlan
-
-loop for each module
-create JsonAdaptedModule
-SerializableModulePlan -> JsonAdaptedModule
-activate JsonAdaptedModule
-
-JsonAdaptedModule --> SerializableModulePlan
-deactivate JsonAdaptedModule
-
-end
-
-SerializableModulePlan --> JsonUtil : jsonData
-deactivate SerializableModulePlan
-
-JsonUtil --> ModulePlanStorage : jsonModulePlan
-
-ModulePlanStorage -->  SerializableModulePlan : toModelType()
-activate SerializableModulePlan
-
-create ModulePlan
-SerializableModulePlan -> ModulePlan
-activate ModulePlan
-
-ModulePlan -> SerializableModulePlan : plan
-deactivate ModulePlan
-
-loop for each module
-SerializableModulePlan -> JsonAdaptedModule : toModelType()
-activate JsonAdaptedModule
-
-create Module
-JsonAdaptedModule -> Module
-activate Module
-
-Module --> JsonAdaptedModule : m
-deactivate module
-
-JsonAdaptedModule --> SerializableModulePlan : m
-deactivate JsonAdaptedModule
-
-SerializableModulePlan -> ModulePlan : addModule(m)
-activate ModulePlan
-
-ModulePlan --> SerializableModulePlan
-deactivate ModulePlan
-
-end
-
-SerializableModulePlan --> ModulePlanStorage : plan
-deactivate SerializableModulePlan
-
-ModulePlanStorage -> MainApp : plan
-deactivate ModulePlanStorage
-
-MainApp --> MainApp : model
-
+[<-- MainApp :
 deactivate MainApp
 
 @enduml
